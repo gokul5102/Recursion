@@ -1,0 +1,30 @@
+{% extends "user/base.html" %}
+{% block content %}
+
+<table>
+    <tr>
+        <td>State</td>
+        <td>Confirmed cases</td>
+        <td>Discharged</td>
+        <td>Deaths</td>
+        <!-- "data": {
+            "summary": {
+              "total": 11555284,
+              "confirmedCasesIndian": 11555236,
+              "confirmedCasesForeign": 48,
+              "discharged": 11107332,
+              "deaths": 159558,
+              "confirmedButLocationUnidentified": 0
+            }, -->
+    </tr>
+    {% for i in response.data.regional%}
+    <tr>
+        <td>{{i.loc}}</td>
+        <td> {{i.totalConfirmed}}</td>
+        <td> {{i.discharged}}</td>
+        <td> {{i.deaths}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

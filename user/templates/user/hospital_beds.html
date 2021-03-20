@@ -1,0 +1,26 @@
+{% extends "user/base.html" %}
+
+{% block content %}
+
+<table>
+    <tr>
+        <td>State</td>
+        <td>Name</td>
+        <td>City</td>
+        <td>Ownership</td>
+        <td>AddmissionCapacity</td>
+        <td>HospitalBeds</td>
+    </tr>
+    {% for i in response.data.medicalColleges%}
+    <tr>
+        <td>{{i.state}}</td>
+        <td> {{i.name}}</td>
+        <td> {{i.city}}</td>
+        <td> {{i.ownership}}</td>
+        <td>{{i.admissionCapacity}}</td>
+        <td>{{i.hospitalBeds}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
