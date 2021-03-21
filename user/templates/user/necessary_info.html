@@ -9,14 +9,49 @@
         <td>Discharged</td>
         <td>Deaths</td>
     </tr>
-    {% for i in response.data.regional%}
-    {% if i.loc == %}
+    <hr>
+    {% for i in res1.data.regional%}
+
+    {% if i.state == 'Maharastra' %}
+    i.state="Maharashtra"
+    {%endif%}
+
+    {% if i.loc == user.state %}
+    
     <tr>
         <td>{{i.loc}}</td>
         <td> {{i.totalConfirmed}}</td>
         <td> {{i.discharged}}</td>
         <td> {{i.deaths}}</td>
     </tr>
+
+    {%endif%} 
+    {% endfor %}
+</table>
+<br>
+<hr>
+<h1><strong>Availability of hospital beds in your state(as of today):</strong></h1>
+
+<table>
+    <tr>
+        <td>State</td>
+        <td>Name</td>
+        <td>City</td>
+        <td>AddmissionCapacity</td>
+        <td>HospitalBeds</td>
+    </tr>
+
+    <hr>
+    {% for i in res2.data.medicalColleges %}
+    {% if i.state == user.state %}
+    <tr>
+        <td>{{i.state}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.city}}</td>
+        <td>{{i.admissionCapacity}}</td>
+        <td>{{i.hospitalBeds}}</td>
+    </tr>
+    {%endif%}
     {% endfor %}
 </table>
 {% endblock content %}

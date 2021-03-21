@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm
-from .models import Developer
+from .models import Developer,CustomUser
 import requests
 
 def home(request):
-    return render(request,'user/home.html')
+    response = requests.get("https://api.rootnet.in/covid19-in/stats/latest").json()
+    return render(request,'user/home.html',{'response':response})
 
 def cases(request):
     response = requests.get("https://api.rootnet.in/covid19-in/stats/latest").json()
@@ -40,8 +41,10 @@ def signup(request):
 def info(request):
     response1 = requests.get("https://api.rootnet.in/covid19-in/stats/latest").json()
     response2 = requests.get("https://api.rootnet.in/covid19-in/hospitals/medical-colleges").json()
+    user=CustomUser.objects.get(id=request.user.id)
     context={
         'res1':response1,
         'res2':response2,
+        'user':user,
     }
     return render(request,'user/necessary_info.html',context)

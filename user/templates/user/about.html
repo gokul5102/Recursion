@@ -2,44 +2,34 @@
 
 {% block content %}
 
-<!-- {% for d in dev%}
-<div class="w-6/12 sm:w-4/12 px-4">
-  <img src="{{d.image.url}}">
-</div>
-
-<div>
-  {{d.name}}
-</div>
-
-<p>
-  {{d.desc}}
-</p>
-{%endfor%} -->
 
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="py-24 mx-5">
     <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20">Meet the developers
       <br class="hidden sm:block">of this project
     </h1>
+    {% for d in dev%}
+  </div>
+</section>
     <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
       <div class="p-4 md:w-1/3 flex">
         <div>
-          {% for d in dev%}
-          <div class="w-1/3 sm:w-4/12 ">
+          <div class="text-justify mx-auto">
+          <section class="hero container max-w-screen-lg mx-auto px-20 pb-10">
             <img src="{{d.image.url}}">
-          </div>
+          </section>
         </div>
         <div class="flex-grow pl-6">
           <h2 class="text-gray-900 text-lg title-font font-medium mb-2">{{d.name}}</h2>
-          <p class="leading-relaxed text-base">
+          <p class="leading-relaxed text-base ">
             {{d.desc}} </p>
         </div>
-        {%endfor%}
       </div>
-      
-      
+       
+      </div>
     </div>
   </div>
-</section>
+  {%endfor%}
+</section> 
 
 {% endblock content %}

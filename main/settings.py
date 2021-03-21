@@ -131,7 +131,7 @@ CRISPY_TEMPLATE_PACK = 'tailwind'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
-LOGIN_REDIRECT_URL='user-home'
+LOGIN_REDIRECT_URL='required-info'
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'

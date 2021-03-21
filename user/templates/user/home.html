@@ -3,15 +3,22 @@
 {% block content %}
 <section style="background-color:rgb(223, 199, 199)" class="text-gray-600 body-font">
     <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-              <!-- "data": {
-            "summary": {
-              "total": 11555284,
-              "confirmedCasesIndian": 11555236,
-              "confirmedCasesForeign": 48,
-              "discharged": 11107332,
-              "deaths": 159558,
-              "confirmedButLocationUnidentified": 0
-            }, -->
+      <h1>Total live cases tracker(of India):</h1>
+      <!-- <table>
+        <tr>
+            <td>Total</td>
+            <td>Discharged</td>
+            <td>Deaths</td>
+        </tr>
+        {% for i in response.data.summary%}
+        <tr>
+            <td>{{i.total}}</td>
+            <td> {{i.discharged}}</td>
+            <td> {{i.deaths}}</td>
+        </tr>
+        {% endfor %}
+    </table> -->
+    <!-- <br> -->
       <div class="text-center lg:w-2/3 w-full">
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcome to covid-19 live tracker!!</h1>
         <p class="mb-8 leading-relaxed">Your one stop place to check number of cases and hospital bed availability.</p>
@@ -43,16 +50,16 @@
             <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
             <nav class="list-none mb-10">
               <li>
-                <a class="text-gray-600 hover:text-gray-800">First Link</a>
+                <a class="text-gray-600 hover:text-gray-800" href="{%url 'user-home'%}">Home</a>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Second Link</a>
+                <a class="text-gray-600 hover:text-gray-800" href="{%url 'covid-tracker'%}">Covid-cases</a>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Third Link</a>
+                <a class="text-gray-600 hover:text-gray-800" href="/">Contact US</a>
               </li>
               <li>
-                <a class="text-gray-600 hover:text-gray-800">Fourth Link</a>
+                <a class="text-gray-600 hover:text-gray-800" href="{%url 'about'%}">About Us</a>
               </li>
             </nav>
           </div>
