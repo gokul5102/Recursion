@@ -1,6 +1,7 @@
 {% extends "user/base.html" %}
 {% block content %}
 
+<h1><strong>Covid-19 Cases in your State(as of today):</strong></h1>
 <table>
     <tr>
         <td>State</td>
@@ -9,6 +10,7 @@
         <td>Deaths</td>
     </tr>
     {% for i in response.data.regional%}
+    {% if i.loc == %}
     <tr>
         <td>{{i.loc}}</td>
         <td> {{i.totalConfirmed}}</td>
@@ -17,5 +19,4 @@
     </tr>
     {% endfor %}
 </table>
-
 {% endblock content %}

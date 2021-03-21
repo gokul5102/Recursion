@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
+     "crispy_tailwind",
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
   BASE_DIR / "static",
 ]
+
+CRISPY_TEMPLATE_PACK = 'tailwind'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+LOGIN_REDIRECT_URL='user-home'
+
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+

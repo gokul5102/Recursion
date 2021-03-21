@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.contrib.auth.forms import UserCreationForm
+from .forms import UserRegisterForm
+from .models import Developer
 import requests
 
 def home(request):
@@ -14,7 +16,32 @@ def beds(request):
     return render(request,'user/hospital_beds.html',{'response':response})
 
 def about(request):
-    return render(request,'user/about.html')
+    dev=Developer.objects.all()
+    context={
+        'dev':dev
+    }
+    return render(request,'user/about.html',context)
 
 def contact(request):
     return render(request,'user/contact.html')
+
+def signup(request):
+    if request.method == 'POST':
+        form=UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data['username']
+            return redirect('login')
+    else:
+        form=UserRegisterForm()
+    return render(request,'user/signup.html',{'form':form})
+
+
+def info(request):
+    response1 = requests.get("https://api.rootnet.in/covid19-in/stats/latest").json()
+    response2 = requests.get("https://api.rootnet.in/covid19-in/hospitals/medical-colleges").json()
+    context={
+        'res1':response1,
+        'res2':response2,
+    }
+    return render(request,'user/necessary_info.html',context)
